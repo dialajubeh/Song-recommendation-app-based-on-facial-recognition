@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+
+
+  <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet">
+
+    <title>Profile • MoodShot</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Profile">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>profile</title>
+    <link rel="stylesheet" href="/static/nicepage.css" media="screen">
+<link rel="stylesheet" href="/static/profile.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/static/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/static/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i">
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "home",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="profile">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+
+  <body class="u-body">
+    <section class="u-align-center u-clearfix u-gradient u-section-1" id="carousel_1254">
+    <div class="container my-4">
+
+    <hr class="my-4">
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar primary-color">
+
+        <!-- Navbar brand -->
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile/friends/" class="{% if request.path == path_to_friends %}active{% endif %}item" style="font-family: 'Georgia', serif !important;
+                                color:  #687d8c;  font-size: 20px;" >Friends</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile/all-profiles/" class="{% if request.path == path_to_all_profiles %}active{% endif %} item" style="font-family: 'Georgia', serif !important;
+                                 color:  #687d8c;  font-size: 20px;" >All Profiles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile/invites/" class="{% if request.path == path_to_my_invites %}active{% endif %} item" style="font-family: 'Georgia', serif !important;
+                                 color:  #687d8c;  font-size: 20px;" >Received Invites <div class="ui purple horizontal label" style="padding-top: 3px; position: center ">{{invites_num}}</div></a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/playlist/" class="{% if request.path == path_to_all_profiles %}active{% endif %} item" style="font-family: 'Georgia', serif !important;
+                                 color:  #687d8c;  font-size: 20px;" >Playlists</a>
+                    </li>
+                     <li class="nav-item" >
+                        <a class="nav-link" href="/recommend/analysis" style="font-family: 'Georgia', serif !important;
+                                color: #687d8c; font-size: 20px;">Analysis</a>
+                    </li>
+
+
+                     <li class="nav-item" >
+                        <a class="nav-link" href="/room/notifications/" style="font-family: 'Georgia', serif !important;
+                                color: #687d8c; font-size: 20px; margin-left: 300px;">Notifications <b style="color: #a35559; font-size: 22px;">{{num_notifications}}</b></a>
+                    </li>
+
+                    <li class="nav-item" >
+                        <a class="nav-link" href="/logout" style="font-family: 'Georgia', serif !important;
+                                color: #687d8c; font-size: 20px;">Logout</a>
+                    </li>
+
+
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login" style="font-family: 'Georgia', serif !important;
+                                color:  #687d8c; font-size: 20px;">Login</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+</div>
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-gradient u-shape u-shape-rectangle u-shape-1"></div>
+        <div class="u-align-left u-container-style u-group u-white u-group-1">
+          <div class="u-container-layout u-valign-top-sm u-valign-top-xs u-container-layout-1">
+            <div class="u-palette-2-light-3 u-shape u-shape-circle u-shape-2"></div>
+            <h1 class="u-text u-text-1">Profile</h1>
+          </div>
+        </div>
+        <div class="u-align-left u-container-style u-group u-palette-5-dark-3 u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <h3 class="u-text u-text-2">welcome to your profile, {{ user.get_username }}</h3>
+
+            <h6 class="u-text u-text-3">Here you can:</h6>
+            <ul class="u-custom-list u-text u-text-4">
+              <li>
+                <div class="u-list-icon u-text-palette-4-base">
+                  <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-d48b"><path d="m202.6 478-202.6-186.6 70.5-76.6 121.5 111.9 239.4-292.7 80.6 65.9z" fill="currentColor"></path></svg>
+                </div>
+              </li>
+              <li>
+                <div class="u-list-icon u-text-palette-4-base">
+                  <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-d48b"><path d="m202.6 478-202.6-186.6 70.5-76.6 121.5 111.9 239.4-292.7 80.6 65.9z" fill="currentColor"></path></svg>
+                </div>Update your info<br>
+              </li>
+              <li>
+                <div class="u-list-icon u-text-palette-4-base">
+                  <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-d48b"><path d="m202.6 478-202.6-186.6 70.5-76.6 121.5 111.9 239.4-292.7 80.6 65.9z" fill="currentColor"></path></svg>
+                </div>Take a selfie and calm your mood
+              </li>
+              <li>
+                <div class="u-list-icon u-text-palette-4-base">
+                  <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-d48b"><path d="m202.6 478-202.6-186.6 70.5-76.6 121.5 111.9 239.4-292.7 80.6 65.9z" fill="currentColor"></path></svg>
+                </div>
+              </li>
+              <li>Listen to music from your playlist</li>
+              <li>
+                <div class="u-list-icon u-text-palette-4-base">
+                  <svg class="u-svg-content" viewBox="0 0 512 512" id="svg-d48b"><path d="m202.6 478-202.6-186.6 70.5-76.6 121.5 111.9 239.4-292.7 80.6 65.9z" fill="currentColor"></path></svg>
+                </div>Check your friends, send them msgs &amp; music
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-custom-color-2 u-section-2" id="carousel_7914">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-height u-palette-2-light-3 u-shape u-shape-rectangle u-shape-1"></div>
+        <h1 class="u-heading-font u-text u-text-default u-title u-text-1">
+          <span class="u-text-palette-2-light-2">Mood</span>
+          <span class="u-text-custom-color-2">Shot</span>
+        </h1>
+        <div class="u-shape u-shape-svg u-text-custom-color-2 u-shape-2">
+
+           <p  style="font-family: 'Georgia', serif !important;
+                        color: #95bfe2; text-align:center;  font-size:36px;  ">
+                        Your first name : {{profile.first_name}}
+                        <br>
+                        Your last name : {{profile.last_name}}
+                        <br>
+                        Country : {{profile.country}}
+                        <br>
+                        Bio : {{profile.bio}}
+                        <br>
+
+                    </p>
+              <div class="d-flex justify-content-center form_container" style="text-align: center;">
+                <button class="btn btn-info" type="submit" style="width: 50%;
+            background: #C8D9EB !important;
+            color: white !important;" onclick="openForm()">Update my info</button></div>
+            <div class="d-flex justify-content-center form_container" style="text-align: center;">
+                {% if confirm%}
+                    <div class="ui purple message ui mini message">Your profile has been updated</div>
+                {%endif%}
+            </div>
+            <div class="form-popup" id="myForm">
+                <form action="" method="POST">
+                    {% csrf_token%}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas"><a>First name: </a></i></span>
+                        </div>
+                        {{form.first_name}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><a>Last name: </a></span>
+                        </div>
+                        {{form.last_name}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Bio: </span>
+                        </div>
+                        <textarea name="bio"  cols="40" id="id_bio" rows="10" maxlength="300" class="form-control" required>
+                            </textarea>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><a>Email: </a></span>
+                        </div>
+                        {{form.email}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><a>Country: </a></span>
+                        </div>
+                        {{form.country}}
+                    </div>
+                    <button class="btn btn-primary" type="submit" style="width: 40%;
+                        background: #C8D9EB !important;
+                        color: white !important;">Update</button>
+                    <button class="btn cancel btn-primary " type="button" style="width: 40%;
+                        background: #C8D9EB !important;
+                        color: white !important;" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+        </div>
+            </div>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+        /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+//We start indexing at one because CSRF_token is considered and input field
+*/
+
+        //Query All input fields
+        var form = document.getElementsByTagName('input')
+        form[1].placeholder='First name';
+        form[2].placeholder='Last name';
+        form[3].placeholder='Email';
+        form[4].placeholder='Country';
+
+        for (var fields in form){
+            form[fields].className += ' form-control'
+        }
+        form[bio].className = 'form-control'
+        form[bio].placeholder = 'Bio'
+    </script>
+
+        </div>
+            </div>
+
+    </section>
+
+    <section class="u-align-center u-clearfix u-palette-1-light-3 u-section-3" id="carousel_e5d9">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-30 u-layout-cell-1">
+                <div class="u-container-layout u-container-layout-1">
+                  <div class="u-custom-color-2 u-shape u-shape-circle u-shape-1">
+                  <div class="d-flex justify-content-left h-90" style=" margin-top: 50px; margin-left: 50px;">
+
+                <div class="d-flex justify-content-center form_container" style="text-align: center; margin-top: 150px; margin-left: 30px;">
+                    <p style="font-family: 'Georgia', serif !important;
+                        color: #fbeced; text-align:center;">
+                        <br>
+                        <a href="/recommend" style="font-family: 'Georgia', serif !important; color: #fbeced;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                            <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                            <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                        </svg></a>
+                        <br>
+                        <a href="/recommend" style="font-family: 'Georgia', serif !important; color: #fbeced; font-size: 30px; ">Click camera take a selfie!</a>
+                    </p>
+
+            </div>
+                </div>
+
+
+
+</div>
+                </div>
+              </div>
+              <div class="u-container-style u-layout-cell u-left-cell u-size-30 u-layout-cell-2">
+                <div class="u-container-layout u-valign-middle-lg u-valign-middle-sm u-valign-middle-xl u-container-layout-2">
+                  <h2 class="u-align-center u-text u-text-default u-text-1">
+                    <span style="font-size: 3rem;">Strategy<br>
+                    </span>
+                    <br>Take a selfie,based on your current emotion, the suitable song will be played
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8ee1"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">&nbsp;Contact us&nbsp;<br>moodshot21@gmail.com
+        </p>
+      </div></footer>
+
+  </body>
+</html>

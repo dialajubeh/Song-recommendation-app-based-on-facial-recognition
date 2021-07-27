@@ -1,0 +1,67 @@
+{% extends 'profiles/base.html' %}
+
+{% block title %}
+My Invites
+{% endblock title %}
+{% block content %}
+
+    {% if is_empty %}
+        <a style="font-family: 'Snell Roundhand', serif !important;
+        color: #687d8c ; font-weight: bold; font-size: 30px; position: absolute;
+            left: 500px;
+            top: 150px;">You don't have any invitations!</a>
+    {% endif %}
+
+    <style>
+        .user_card {
+            width: 450px;
+            margin-top: auto;
+            margin-bottom: auto;
+            background: #f8fbfb;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+
+        }
+    </style>
+    <div class="d-flex justify-content-center h-90" style="margin-top: 50px">
+    </div>
+
+    {% for obj in qs %}
+        <div class="row" style="margin-top: 20px; margin-left:500px">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title" style="font-family: 'Georgia', serif;">{{obj.user}}</h3>
+            </div>
+            <div class="d-flex justify-content-center mt-4" style="text-align: center">
+                <p style="font-family: 'Georgia', serif !important;
+                        color: #5588A3; text-align:center;">{{obj.bio}}</p>
+            </div>
+
+            <div class="d-flex justify-content-center mt-1" style="text-align: center">
+                <form action="{% url 'accept-invite' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_pk" value={{obj.pk}}>
+                        <button type="submit" class="ui positive basic btn btn-outline-success mb-5 w-big mr-3" style=" font-family: 'Georgia', serif; color: #198754" ><i class="check icon"></i>Accept invite</button>
+                    </form>
+                    <form action="{% url 'reject-invite'%}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="profile_pk" value={{obj.pk}}>
+                        <button type="submit" class="ui negative basic btn btn-outline-danger w-big mb-5" style=" font-family: 'Georgia', serif; color: #dc3545">
+                            <i class="close icon"></i>
+                            Reject invite
+                        </button>
+                </form>
+            </div>
+
+    {% endfor %}
+{% endblock content %}
+
+</div>
+</div>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+<style>
+.form {
+    color: black;
+}
+</style>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Profile">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>room</title>
+    <link rel="stylesheet" href="/static/nicepage.css" media="screen">
+<link rel="stylesheet" href="/static/room.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/static/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/static/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "home",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="room">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body class="u-body">
+    <section class="u-align-center u-clearfix u-image u-section-1" id="carousel_1254" data-image-width="1280" data-image-height="807">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-align-left u-container-style u-group u-palette-5-dark-3 u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <h3 class="u-text u-text-1">Sharing is Caring</h3>
+            <h5 class="u-text u-text-2">Don't forget to make your friend's mood better too!</h5>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-align-left u-clearfix u-custom-color-2 u-section-2" id="carousel_7914">
+      <div class="u-expanded-height u-palette-2-light-3 u-shape u-shape-rectangle u-shape-1"></div>
+      <h1 class="u-heading-font u-text u-title u-text-1">
+        <span class="u-text-palette-2-light-2">Mood</span>
+        <span class="u-text-custom-color-2">Shot</span>
+      </h1>
+      <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-1">
+              <div class="u-container-layout u-container-layout-1"></div>
+            </div>
+            <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-2">
+              <div class="u-container-layout u-container-layout-2">
+                <h2 class="u-text u-text-2">Your friends</h2>
+                {% for q in qs %}
+                {{q}}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="u-container-style u-layout-cell u-size-20 u-layout-cell-3">
+              <div class="u-container-layout u-container-layout-3">
+                <h2 class="u-text u-text-3">Choose one friend, and write his name down</h2>
+                <div>
+               <form action="" method="POST" style="color: black">
+{% csrf_token %}
+{{ form}}
+<input type="Submit" name="submit" value="Submit"/>
+</form>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8ee1"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">&nbsp;Contact us&nbsp;<br>moodshot21@gmail.com
+        </p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+        <span>HTML Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.com/html-website-builder" target="_blank">
+        <span>HTML Builder</span>
+      </a>. 
+    </section>
+  </body>
+</html>

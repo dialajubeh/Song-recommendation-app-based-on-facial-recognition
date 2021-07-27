@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+      <title>Sign Up • MoodShot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <style>
+        h1 {
+            font-family: 'Snell Roundhand', serif !important;
+            color: #e8e9e9;
+            font-weight: bold;
+            position: absolute;
+            left: 640px;
+            top: 50px;
+        }
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #5588A3 !important;
+        }
+        .user_card {
+            width: 350px;
+            margin-top: auto;
+            margin-bottom: auto;
+            background: #f8fbfb;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+
+        }
+
+        .form_container {
+            margin-top: 20px;
+        }
+
+        #form-title{
+            font-family: 'Georgia', serif !important;
+            color: #5588A3;
+        }
+        .login_btn {
+            width: 100%;
+            background: #C8D9EB !important;
+            color: white !important;
+        }
+        .login_btn:focus {
+            background-color: #5588A3;
+            box-shadow: none !important;
+            outline: 0px !important;
+            color: #C8D9EB;
+
+        }
+        .login_container {
+            padding: 0 2rem;
+        }
+        .input-group-text {
+            background: #C8D9EB !important;
+            color: white !important;
+            border: 0 !important;
+            border-radius: 0.25rem 0 0 0.25rem !important;
+        }
+        .input_user,
+        .input_pass:focus {
+            box-shadow: none !important;
+            outline: 0px !important;
+        }
+
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Login">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>register</title>
+    <link rel="stylesheet" href="/static/nicepage.css" media="screen">
+<link rel="stylesheet" href="/static/register.css" media="screen">
+    <script class="u-script" type="text/javascript" src="/static/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="/static/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.15.3, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "home",
+		"url": "index.html"
+}</script>
+    <meta property="og:title" content="register">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+  </head>
+  <body class="u-body">
+    <section class="u-clearfix u-custom-color-2 u-section-1" id="carousel_310c">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <img src="/static/images/logoo.PNG" alt="" class="u-expanded-width-xs u-image u-image-default u-image-1" data-image-width="202" data-image-height="231">
+        <div class="u-container-style u-expanded-width-xs u-group u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+              <br>
+              <br>
+ <div class="d-flex justify-content-center">
+                <h3 id="form-title">Sign Up</h3>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        {{register_form.username}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+                        </div>
+                        {{register_form.email}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        {{register_form.password1}}
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        {{register_form.password2}}
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input class="btn login_btn" type="submit" value="Sign Up">
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="mt-3">
+                <div style="width: 100%; height: 15px; border-bottom: 1px solid lightgray; text-align: center">
+                    <span class="text-muted" style="font-size: 11px; background-color: #f8fbfb; padding: 15px 10px;">
+                        OR
+                    </span>
+                </div>
+            </div>
+
+            <div class="mt-3">
+
+                <div class=" signin text-center">
+                    <a  href="" class="text-dark"><img src="https://androidexample365.com/content/images/2019/11/GoogleSignUpDark.png" width="200" height="100" class="center"></a>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <div class="d-flex justify-content-center links" style="font-family: 'Georgia', serif !important;
+            color: #5588A3;">
+                    Already have an account? <a href='/login' class="ml-2">Log In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+//We start indexing at one because CSRF_token is considered and input field
+*/
+
+    //Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username';
+    form_fields[2].placeholder='Email';
+    form_fields[3].placeholder='Enter password';
+    form_fields[4].placeholder='Re-enter Password';
+
+
+    for (var fields in form_fields){
+        form_fields[fields].className += ' form-control'
+    }
+</script>
+      </div>
+    </section>
+
+
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8ee1"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">&nbsp;Contact us&nbsp;<br>moodshot21@gmail.com
+        </p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Website Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.com/" target="_blank">
+        <span>Website Design Software</span>
+      </a>.
+    </section>
+  </body>
+</html>

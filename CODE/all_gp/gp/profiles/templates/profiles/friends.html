@@ -1,0 +1,43 @@
+{% extends 'profiles/base.html' %}
+{% block title %}
+Friends
+{% endblock title %}
+<style>
+    .user_card {
+        width: 450px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #f8fbfb;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+
+    }
+</style>
+{% block content %}
+    <div class="d-flex justify-content-center h-90" style="margin-top: 50px">
+    </div>
+    {% for obj in qs %}
+        <div class="row" style="margin-top: 20px; margin-left:500px">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <h3 id="form-title" style="font-family: 'Georgia', serif;">{{obj.user}}</h3>
+            </div>
+            <div class="d-flex justify-content-center mt-4" style="text-align: center">
+                <p style="font-family: 'Georgia', serif !important;
+                        color: #5588A3; text-align:center;">{{obj.bio}}</p>
+            </div>
+
+    </div>
+
+    </div>
+    {% endfor %}
+
+
+{% endblock %}
